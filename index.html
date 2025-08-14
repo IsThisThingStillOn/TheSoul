@@ -679,6 +679,7 @@
       const deckInput = document.getElementById('deck');
       const stakeInput = document.getElementById('stake');
       const versionInput = document.getElementById('version');
+      const searchParam = document.getElementById('searchInput');
 
       // Get seed value from URL parameters
       const urlParams = new URLSearchParams(window.location.search);
@@ -689,6 +690,7 @@
       const urlStake = urlParams.get('stake');
       const urlVersion = urlParams.get('version');
       const urlUnlocks = urlParams.get('unlocks');
+      const urlSearch = urlParams.get('search');
 
       if (urlUnlocks) {
         // Decode the base64 string
@@ -753,6 +755,9 @@
       if (urlVersion) {
         versionInput.value = urlVersion;
       }
+      if (urlSearch) {
+        searchParam.value = urlSearch;
+      }
 
       // Add event listener for input event
       seedInput.addEventListener('input', () => {
@@ -787,6 +792,7 @@
           if (isNaN(fixedInput[i])) fixedInput[i] = 0;
         }
         cardsPerAnteInput.value = fixedInput;
+        searchInput.value = searchParam;
       });
 
       function filterSeed(seed) {
